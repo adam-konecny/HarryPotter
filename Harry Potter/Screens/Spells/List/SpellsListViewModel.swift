@@ -10,12 +10,12 @@ import SwiftUI
 @Observable
 class SpellsListViewModel {
     @ObservationIgnored
-    private let container: Container
+    private let services: any ServicesProtocol
     
     var dataState: DataState<[Spell]> = .loading
     
-    init(container: Container) {
-        self.container = container
+    init(services: any ServicesProtocol) {
+        self.services = services
     }
     
     func didAppear() {
@@ -26,7 +26,7 @@ class SpellsListViewModel {
     
     private func loadSpells() async {
         do {
-            let spells = try await container.apiService.getSpells()
+            let spells = try await services.apiService.getSpells()
             
             dataState = .loaded(spells)
         } catch {

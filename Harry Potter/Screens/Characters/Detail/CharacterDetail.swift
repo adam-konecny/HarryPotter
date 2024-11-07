@@ -34,5 +34,12 @@ struct CharacterDetail: View {
             .frame(width: 160.0)
             .clipShape(.rect(cornerRadius: 16.0))
     }
-    
+}
+
+#Preview {
+    CharacterDetail(
+        viewModel: CharacterDetailViewModel(
+            character: .random
+        )
+    )
 }

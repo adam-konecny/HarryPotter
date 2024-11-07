@@ -19,11 +19,12 @@ struct SpellsList: View {
                     ProgressView()
                 case .loaded(let spells):
                     ScrollView {
-                        LazyVStack {
+                        LazyVStack(spacing: 16.0) {
                             ForEach(spells, id: \.self) { spell in
-                                Text(spell.name)
+                                SpellListItem(spell: spell)
                             }
                         }
+                        .padding()
                     }
                 case .error(let error):
                     Text(error.localizedDescription)
@@ -35,4 +36,12 @@ struct SpellsList: View {
             viewModel.didAppear()
         }
     }
+}
+
+#Preview {
+    SpellsList(
+        viewModel: .init(
+            services: MockedServices()
+        )
+    )
 }

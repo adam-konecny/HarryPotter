@@ -55,3 +55,11 @@ struct CharactersList: View {
             .padding()
     }
 }
+
+#Preview {
+    CharactersList(
+        viewModel: .init(
+            services: MockedServices()
+        )
+    )
+}

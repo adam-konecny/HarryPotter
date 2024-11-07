@@ -60,3 +60,12 @@ struct CharacterListItem: View {
         }
     }
 }
+
+#Preview {
+    VStack {
+        CharacterListItem(
+            character: .random
+        )
+    }
+    .padding()
+}

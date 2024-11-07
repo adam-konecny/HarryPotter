@@ -10,12 +10,12 @@ import SwiftUI
 @Observable
 class CharactersListViewModel {
     @ObservationIgnored
-    private let container: Container
+    private let services: any ServicesProtocol
     
     var dataState: DataState<[Person]> = .loading
     
-    init(container: Container) {
-        self.container = container
+    init(services: any ServicesProtocol) {
+        self.services = services
     }
     
     func didAppear() {
@@ -26,7 +26,7 @@ class CharactersListViewModel {
     
     private func loadCharacters() async {
         do {
-            let characters = try await container.apiService.getCharacters()
+            let characters = try await services.apiService.getCharacters()
             
             dataState = .loaded(characters)
         } catch {

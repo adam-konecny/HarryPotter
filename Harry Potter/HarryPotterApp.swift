@@ -12,7 +12,7 @@ struct HarryPotterApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                CharactersList(viewModel: CharactersListViewModel(container: .init()))
+                CharactersList(viewModel: CharactersListViewModel(services: Services(configuration: .production)))
                     .tabItem {
                         Label {
                             Text("Characters")
@@ -21,7 +21,7 @@ struct HarryPotterApp: App {
                         }
                     }
                 
-                SpellsList(viewModel: SpellsListViewModel(container: .init()))
+                SpellsList(viewModel: SpellsListViewModel(services: Services(configuration: .production)))
                     .tabItem {
                         Label {
                             Text("Spells")
