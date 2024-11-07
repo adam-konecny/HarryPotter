@@ -16,19 +16,11 @@ struct CharactersList: View {
             Group {
                 switch viewModel.dataState {
                 case .loading:
-                    ProgressView()
+                    loadingView
                 case .loaded(let characters):
-                    ScrollView {
-                        LazyVStack {
-                            ForEach(characters, id: \.self) { character in
-                                CharacterListItem(character: character)
-                            }
-                        }
-                        .padding()
-                    }
+                    loadedView(characters)
                 case .error(let error):
-                    Text(error.localizedDescription)
-                        .padding()
+                    errorView(error)
                 }
             }
             .navigationTitle("Characters")
@@ -36,5 +28,30 @@ struct CharactersList: View {
         .onAppear {
             viewModel.didAppear()
         }
+    }
+    
+    private var loadingView: some View {
+        ProgressView()
+    }
+    
+    private func loadedView(_ characters: [Person]) -> some View {
+        ScrollView {
+            LazyVStack(spacing: 24.0) {
+                ForEach(characters, id: \.self) { character in
+                    NavigationLink(value: character) {
+                        CharacterListItem(character: character)
+                    }
+                }
+            }
+            .padding()
+        }
+        .navigationDestination(for: Person.self) { character in
+            CharacterDetail(viewModel: CharacterDetailViewModel(character: character))
+        }
+    }
+    
+    private func errorView(_ error: Error) -> some View {
+        Text(error.localizedDescription)
+            .padding()
     }
 }
