@@ -11,7 +11,7 @@ import SwiftUI
 struct HarryPotterApp: App {
     var body: some Scene {
         WindowGroup {
-            BooksList(viewModel: BooksListViewModel(container: .init()))
+            CharactersList(viewModel: CharactersListViewModel(container: .init()))
         }
     }
 }

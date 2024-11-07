@@ -1,5 +1,5 @@
 //
-//  BooksList.swift
+//  CharactersList.swift
 //  Harry Potter
 //
 //  Created by Adam Konečný on 06.11.2024.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct BooksList: View {
-    @State var viewModel: BooksListViewModel
+struct CharactersList: View {
+    @State var viewModel: CharactersListViewModel
     @State private var navigationPath = NavigationPath()
     
     var body: some View {
@@ -17,11 +17,11 @@ struct BooksList: View {
                 switch viewModel.dataState {
                 case .loading:
                     ProgressView()
-                case .loaded(let books):
+                case .loaded(let characters):
                     ScrollView {
                         LazyVStack {
-                            ForEach(books, id: \.self) { book in
-                                Text(book.title)
+                            ForEach(characters, id: \.self) { character in
+                                Text(character.fullName)
                             }
                         }
                     }

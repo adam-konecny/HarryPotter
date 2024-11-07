@@ -11,7 +11,7 @@ import Foundation
 // https://github.com/fedeperin/potterapi?ref=public_apis
 class APIService {
     private func makeRequest<T: Decodable>(url: String, type: T.Type) async throws -> T {
-        let reponse = await AF.request(url)
+        let reponse = await AF.request("https://potterapi-fedeperin.vercel.app" + url)
             .validate()
             .serializingDecodable(T.self)
             .response
@@ -24,7 +24,7 @@ class APIService {
         }
     }
     
-    func getBooks() async throws -> ListResponse<Book> {
-        try await makeRequest(url: "https://openlibrary.org/search.json?q=the+lord+of+the+rings&limit=5&page=1&fields=title", type: ListResponse<Book>.self)
+    func getCharacters() async throws -> [Person] {
+        try await makeRequest(url: "/en/characters", type: [Person].self)
     }
 }
