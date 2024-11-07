@@ -24,6 +24,10 @@ class CharactersListViewModel: ViewModel {
         }
     }
     
+    func refresh() async {
+        await loadCharacters()
+    }
+    
     private func loadCharacters() async {
         do {
             let characters = try await services.apiService.getCharacters()

@@ -45,6 +45,9 @@ struct CharactersList: View {
             }
             .padding()
         }
+        .refreshable {
+            await viewModel.refresh()
+        }
         .navigationDestination(for: Person.self) { character in
             CharacterDetail(
                 viewModel: CharacterDetailViewModel(
