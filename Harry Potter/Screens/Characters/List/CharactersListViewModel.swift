@@ -8,9 +8,9 @@
 import SwiftUI
 
 @Observable
-class CharactersListViewModel {
+class CharactersListViewModel: ViewModel {
     @ObservationIgnored
-    private let services: any ServicesProtocol
+    let services: any ServicesProtocol
     
     var dataState: DataState<[Person]> = .loading
     

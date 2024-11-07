@@ -39,6 +39,7 @@ struct CharacterDetail: View {
 #Preview {
     CharacterDetail(
         viewModel: CharacterDetailViewModel(
+            services: MockedServices(),
             character: .random
         )
     )

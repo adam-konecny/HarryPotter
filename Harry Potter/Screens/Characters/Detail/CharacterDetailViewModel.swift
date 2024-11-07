@@ -8,11 +8,15 @@
 import SwiftUI
 
 @Observable
-class CharacterDetailViewModel {
+class CharacterDetailViewModel: ViewModel {
+    @ObservationIgnored
+    let services: any ServicesProtocol
+    
     @ObservationIgnored
     let character: Person
     
-    init(character: Person) {
+    init(services: any ServicesProtocol, character: Person) {
+        self.services = services
         self.character = character
     }
 }

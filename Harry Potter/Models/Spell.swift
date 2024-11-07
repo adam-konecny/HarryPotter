@@ -18,8 +18,16 @@ struct Spell: Decodable, Hashable {
     
     static var random: Self {
         .init(
-            name: ["Apple", "Orange", "Banana"].randomElement()!,
-            use: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Sed dictum semper pharetra. Phasellus at risus eget nisi varius varius.", "Nullam lacinia placerat accumsan. Maecenas sed maximus nulla."].randomElement()!
+            name: [
+                "Apple",
+                "Orange",
+                "Banana"
+            ].randomElement()!,
+            use: [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "Sed dictum semper pharetra. Phasellus at risus eget nisi varius varius.",
+                "Nullam lacinia placerat accumsan. Maecenas sed maximus nulla."
+            ].randomElement()!
         )
     }
 }

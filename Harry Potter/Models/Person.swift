@@ -18,12 +18,28 @@ struct Person: Decodable, Hashable {
     
     static var random: Self {
         .init(
-            fullName: ["Ronald Weasly", "Harry Potter", "Hermione Granger"].randomElement()!,
-            nickname: ["Ron", "Harry", "Hermione"].randomElement()!,
+            fullName: [
+                "Ronald Weasly",
+                "Harry Potter",
+                "Hermione Granger"
+            ].randomElement()!,
+            nickname: [
+                "Ron",
+                "Harry",
+                "Hermione"
+            ].randomElement()!,
             hogwartsHouse: "Griffindor",
             interpretedBy: "Daniel Radcliffe",
-            children: ["Fred Weasley", "George Weasley", "Luna Lovegood"],
-            image: ["https://raw.githubusercontent.com/fedeperin/potterapi/main/public/images/covers/1.png", "https://raw.githubusercontent.com/fedeperin/potterapi/main/public/images/covers/2.png", "https://raw.githubusercontent.com/fedeperin/potterapi/main/public/images/covers/3.png"].randomElement()!,
+            children: [
+                "Fred Weasley",
+                "George Weasley",
+                "Luna Lovegood"
+            ],
+            image: [
+                "https://raw.githubusercontent.com/fedeperin/potterapi/main/public/images/covers/1.png",
+                "https://raw.githubusercontent.com/fedeperin/potterapi/main/public/images/covers/2.png",
+                "https://raw.githubusercontent.com/fedeperin/potterapi/main/public/images/covers/3.png"
+            ].randomElement()!,
             birthdate: .now
         )
     }

@@ -46,7 +46,12 @@ struct CharactersList: View {
             .padding()
         }
         .navigationDestination(for: Person.self) { character in
-            CharacterDetail(viewModel: CharacterDetailViewModel(character: character))
+            CharacterDetail(
+                viewModel: CharacterDetailViewModel(
+                    services: viewModel.services,
+                    character: character
+                )
+            )
         }
     }
     
