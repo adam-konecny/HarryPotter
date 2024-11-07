@@ -11,7 +11,25 @@ import SwiftUI
 struct HarryPotterApp: App {
     var body: some Scene {
         WindowGroup {
-            CharactersList(viewModel: CharactersListViewModel(container: .init()))
+            TabView {
+                CharactersList(viewModel: CharactersListViewModel(container: .init()))
+                    .tabItem {
+                        Label {
+                            Text("Characters")
+                        } icon: {
+                            Image(systemName: "person.3.fill")
+                        }
+                    }
+                
+                SpellsList(viewModel: SpellsListViewModel(container: .init()))
+                    .tabItem {
+                        Label {
+                            Text("Spells")
+                        } icon: {
+                            Image(systemName: "wand.and.sparkles")
+                        }
+                    }
+            }
         }
     }
 }

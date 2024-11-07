@@ -26,9 +26,9 @@ class CharactersListViewModel {
     
     private func loadCharacters() async {
         do {
-            let books = try await container.apiService.getCharacters()
+            let characters = try await container.apiService.getCharacters()
             
-            dataState = .loaded(books)
+            dataState = .loaded(characters)
         } catch {
             dataState = .error(error)
         }

@@ -27,4 +27,8 @@ class APIService {
     func getCharacters() async throws -> [Person] {
         try await makeRequest(url: "/en/characters", type: [Person].self)
     }
+    
+    func getSpells() async throws -> [Spell] {
+        try await makeRequest(url: "/en/spells", type: [Spell].self)
+    }
 }

@@ -1,14 +1,14 @@
 //
-//  CharactersList.swift
+//  SpellsList.swift
 //  Harry Potter
 //
-//  Created by Adam Konečný on 06.11.2024.
+//  Created by Adam Konečný on 07.11.2024.
 //
 
 import SwiftUI
 
-struct CharactersList: View {
-    @State var viewModel: CharactersListViewModel
+struct SpellsList: View {
+    @State var viewModel: SpellsListViewModel
     @State private var navigationPath = NavigationPath()
     
     var body: some View {
@@ -17,11 +17,11 @@ struct CharactersList: View {
                 switch viewModel.dataState {
                 case .loading:
                     ProgressView()
-                case .loaded(let characters):
+                case .loaded(let spells):
                     ScrollView {
                         LazyVStack {
-                            ForEach(characters, id: \.self) { character in
-                                Text(character.fullName)
+                            ForEach(spells, id: \.self) { spell in
+                                Text(spell.name)
                             }
                         }
                     }
@@ -29,7 +29,7 @@ struct CharactersList: View {
                     Text(error.localizedDescription)
                 }
             }
-            .navigationTitle("Harry Potter")
+            .navigationTitle("Spells")
         }
         .onAppear {
             viewModel.didAppear()
